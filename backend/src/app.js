@@ -11,6 +11,7 @@ const app = express();
 const allowedOrigins = [
   'http://localhost:5173',
   'https://nova-market-5zif.vercel.app',
+  'https://nova-market-5zif-9vu75bl-nova-market5.vercel.app',
 ];
 
 app.use(cors({
