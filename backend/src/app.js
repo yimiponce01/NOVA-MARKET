@@ -15,7 +15,7 @@ const allowedOrigins = [
   'https://nova-market-5zif.vercel.app',
 
   // Dominio de la rama main (CORREGIDO)
-  'https://nova-market-5zif-git-main-nova-market5.vercel.app',
+  'https://nova-market-5zif-ew5g02y87-nova-market5.vercel.app',
 
   // Deployment anterior
   'https://nova-market-5zif-9vu75bl-nova-market5.vercel.app',
