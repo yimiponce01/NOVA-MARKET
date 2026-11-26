@@ -2,6 +2,10 @@ node_modules/
 dist/
 .env
 *.log
+.corepack/
+backups/
+*.dump
+*.tmp
 
 .env.*
 !.env.example

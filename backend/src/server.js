@@ -1,4 +1,6 @@
 import app from './app.js';
+import { assertRuntimeEnv, env } from './config/env.js';
 
-const port = Number(process.env.PORT) || 4000;
+assertRuntimeEnv();
+const port = env.port;
 app.listen(port, () => console.log(`NOVA API escuchando en http://localhost:${port}`));

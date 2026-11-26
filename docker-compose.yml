@@ -1,0 +1,29 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: nova-market-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${DB_NAME:-nova_market}
+      POSTGRES_USER: ${DB_USER:-nova_user}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?Configura DB_PASSWORD en el archivo .env}
+    ports:
+      - "${DB_PORT:-5432}:5432"
+    volumes:
+      - nova-market-postgres-data:/var/lib/postgresql/data
+    networks:
+      - nova-market
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+networks:
+  nova-market:
+    name: nova-market-network
+
+volumes:
+  nova-market-postgres-data:
+    name: nova-market-postgres-data

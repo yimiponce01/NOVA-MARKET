@@ -1,7 +1,10 @@
-export function validateLogin(req, res, next) {
-  const { email, password } = req.body ?? {};
-  if (typeof email !== 'string' || !email.includes('@') || typeof password !== 'string' || password.length < 1) {
-    return res.status(400).json({ ok: false, message: 'Ingresa un correo válido y una contraseña.' });
-  }
-  next();
-}
+import { z } from 'zod';
+import { validate } from './validate.js';
+
+const loginSchema = z.object({
+  login: z.string().trim().min(3).max(100),
+  // Login accepts the locally seeded demo credential; password policy is enforced on account creation.
+  password: z.string().min(1).max(100),
+});
+
+export const validateLogin = validate(loginSchema);
